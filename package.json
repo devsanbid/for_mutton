@@ -1,0 +1,43 @@
+{
+  "name": "heavenstay",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm start",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "clean:root": "rm -rf node_modules package-lock.json",
+    "clean:frontend": "cd frontend && npm run clean",
+    "clean:backend": "cd backend && npm run clean",
+    "clean": "npm-run-all --parallel clean:*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pratikshakandel100/HeavenStay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pratikshakandel100/HeavenStay/issues"
+  },
+  "homepage": "https://github.com/pratikshakandel100/HeavenStay#readme",
+  "description": "",
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "bcryptjs": "^3.0.2",
+    "concurrently": "^9.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "install-all": "^1.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "npm-run-all": "^4.1.5",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7",
+    "tailwindcss": "^4.1.11"
+  }
+}
