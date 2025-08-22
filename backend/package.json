@@ -9,7 +9,10 @@
     "create-admin": "node scripts/createAdmin.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test:all": "jest tests/allModels.test.js",
+    "test:models:watch": "jest tests/allModels.test.js  --watch",
+    "test:models:coverage": "jest tests/models.test.js --coverage"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

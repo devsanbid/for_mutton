@@ -1,16 +1,19 @@
-const { sequelize } = require('../database/db');
-const { User, Hotel, Room, Booking, Review, Notification, Payment } = require('../models');
+const { testSequelize, connectTestDB, closeTestDB, clearTestDB } = require('../database/testDb');
+const { TestUser, TestHotel, TestRoom, TestBooking, TestReview, TestNotification, TestPayment } = require('../models/testModels');
+
+// Export test models for use in test files
+global.User = TestUser;
+global.Hotel = TestHotel;
+global.Room = TestRoom;
+global.Booking = TestBooking;
+global.Review = TestReview;
+global.Notification = TestNotification;
+global.Payment = TestPayment;
 
 // Setup test database
 beforeAll(async () => {
   try {
-    // Connect to test database
-    await sequelize.authenticate();
-    console.log('Test database connected');
-    
-    // Sync database (create tables)
-    await sequelize.sync({ force: true });
-    console.log('Test database synchronized');
+    await connectTestDB();
   } catch (error) {
     console.error('Test database setup failed:', error);
     throw error;
@@ -20,14 +23,7 @@ beforeAll(async () => {
 // Clean up after each test
 afterEach(async () => {
   try {
-    // Clear all tables
-    await Payment.destroy({ where: {}, force: true });
-    await Review.destroy({ where: {}, force: true });
-    await Notification.destroy({ where: {}, force: true });
-    await Booking.destroy({ where: {}, force: true });
-    await Room.destroy({ where: {}, force: true });
-    await Hotel.destroy({ where: {}, force: true });
-    await User.destroy({ where: {}, force: true });
+    await clearTestDB();
   } catch (error) {
     console.error('Test cleanup failed:', error);
   }
@@ -36,8 +32,7 @@ afterEach(async () => {
 // Close database connection after all tests
 afterAll(async () => {
   try {
-    await sequelize.close();
-    console.log('Test database connection closed');
+    await closeTestDB();
   } catch (error) {
     console.error('Error closing test database:', error);
   }
