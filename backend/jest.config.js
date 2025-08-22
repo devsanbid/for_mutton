@@ -1,1 +1,0 @@
-module.exports = {testEnvironment: "node",roots: ["<rootDir>/test"],coveragePathIgnorePatterns: ["/node_modules/"]};

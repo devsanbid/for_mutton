@@ -1,11 +1,12 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
+
 const sequelize = new Sequelize({
   database: 'hotel',
   username: 'postgres',
-  password: '33533',
   host: 'localhost',
+  password: 'root',
   port: 5432,
   dialect: 'postgres',
   logging: false,
